@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Meloh Holdings | Building Tomorrow, Empowering Today</title>
+        <link ref="icon" href="assets/MelohLogo.png" type="image/png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --gold: #d4af37;
+            --light: #f5f5f5;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--primary);
+            overflow-x: hidden;
+            background-color: var(--light);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: padding 0.3s;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            height: 40vh;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .page-header-content {
+            text-align: center;
+            color: var(--white);
+            z-index: 1;
+            padding: 0 2rem;
+            max-width: 1000px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .page-header .tagline {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        /* About Intro */
+        .about-intro {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        .about-intro-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-intro-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .about-intro-text p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 4px solid var(--gold);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Mission Vision */
+        .mission-vision {
+            background: var(--white);
+            padding: 6rem 5%;
+        }
+
+        .mv-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .mv-card {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mv-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
+        }
+
+        .mv-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+            position: relative;
+            z-index: 1;
+        }
+
+        .mv-card p {
+            position: relative;
+            z-index: 1;
+            line-height: 1.8;
+        }
+
+        /* Leadership */
+        .leadership {
+            padding: 6rem 5%;
+            background: var(--light);
+        }
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .leader-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .leader-image {
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 5rem;
+        }
+
+        .leader-info {
+            padding: 2rem;
+        }
+
+        .leader-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .leader-role {
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .leader-bio {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Values */
+        .values {
+            padding: 6rem 5%;
+            background: var(--white);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--gold);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .value-card p {
+            color: #666;
+        }
+
+        /* Locations */
+        .locations {
+            padding: 6rem 5%;
+            background: var(--light);
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .location-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .location-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+        }
+
+        .location-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .location-address {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 3rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-bottom p {
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .page-header .tagline {
+                font-size: 1.2rem;
+            }
+
+            .about-intro-content,
+            .mv-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn-secondary {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><a><img href="assets/MelohLogo.png"></a>MELOH <span>HOLDINGS</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <!--<li><a href="portfolio.html">Portfolio</a></li>-->
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>About Meloh Holdings</h1>
+            <p class="tagline">Building Tomorrow, Empowering Today</p>
+            <p>100% Black-Owned | Women & Youth Led</p>
+        </div>
+    </section>
+
+    <!-- About Intro -->
+    <section class="about-intro">
+        <h2 class="section-title">Our Story</h2>
+        <p class="section-subtitle">Pioneering a New Era of South African Enterprise</p>
+        <div class="about-intro-content">
+            <div class="about-intro-text">
+                <h3>Transforming the Construction Landscape</h3>
+                <p>Established in 2024, Meloh Holdings Pty Ltd represents a new generation of South African enterprise. As a sister company of Mantomba Holdings, we're a 100% black-owned, women and youth-led organization with offices in Pofadder and Kuruman, Northern Cape.</p>
+                <p>We believe that real and significant change to the South African economy comes through the efforts of individuals from diverse cultural and economic backgrounds who remain committed to creating innovative synergies, forging new partnerships, and promoting social cohesion.</p>
+                <p>Our team comprises phenomenal women and youth—dedicated, passionate professionals using their knowledge and experience to make a real difference in the lives of South Africa's previously disenfranchised communities.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Black-Owned</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2024</div>
+                    <div class="stat-label">Established</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Office Locations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">60%</div>
+                    <div class="stat-label">Brand Awareness Goal</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Vision -->
+    <section class="mission-vision">
+        <div class="mv-container">
+            <div class="mv-card">
+                <h3>Our Vision</h3>
+                <p>To support human progress through an integrative balance of individual, group, societal and environmental needs whereby self-interest, concern for others and respect for other cultures and for the environment are seen as synergistic, rather than antagonistic factors of human life and societal development.</p>
+                <p>To be a client-based business which will always apply the "people first" (Batho-Pele) principle, and to provide the best business solutions, in order to be the large business provider in this domain.</p>
+            </div>
+            <div class="mv-card">
+                <h3>Our Mission</h3>
+                <p>To provide a professional, safe, hygienic, quality, and friendly service that will be the first helping-hand in your time of need. We are committed in offering a service that is fast effective and economical as our customer satisfaction is our priority!</p>
+                <p>We undertake to maintain and develop the living environment to the benefit of our recipients by utilizing our skills, expertise, and effective combination of our resources.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership -->
+    <section class="leadership">
+        <h2 class="section-title">Our Leadership</h2>
+        <p class="section-subtitle">Driven by Passionate Professionals</p>
+        <div class="leadership-grid">
+            <div class="leader-card">
+                <div class="leader-image">👑</div>
+                <div class="leader-info">
+                    <h3>Ntombizodwa Rachel Mabaso</h3>
+                    <div class="leader-role">Chief Executive Officer</div>
+                    <p class="leader-bio">Visionary leader with a passion for empowering women and youth in the construction industry. With extensive experience in business development and strategic planning, she drives Meloh Holdings' commitment to excellence and social impact.</p>
+                </div>
+            </div>
+            <div class="leader-card">
+                <div class="leader-image">👨‍💼</div>
+                <div class="leader-info">
+                    <h3>Owethu Mabaso</h3>
+                    <div class="leader-role">Chief Executive Officer</div>
+                    <p class="leader-bio">Dedicated to operational excellence and sustainable business practices. Brings innovative approaches to construction management while maintaining the company's core values of integrity and community empowerment.</p>
+                </div>
+            </div>
+            <div class="leader-card">
+                <div class="leader-image">📈</div>
+                <div class="leader-info">
+                    <h3>Marketing Team</h3>
+                    <div class="leader-role">Chief Marketing Officer & Team</div>
+                    <p class="leader-bio">Focused on increasing brand awareness by 60% within the next two years. Our marketing team develops and oversees the organization's marketing strategy to drive growth and expand our market presence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values">
+        <h2 class="section-title">Our Values</h2>
+        <p class="section-subtitle">The Foundation of Everything We Do</p>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3>Respect</h3>
+                <p>One of our most important traits because it creates a positive work culture for colleagues, clients, and partners to accomplish goals together. A respectful attitude is our priority, regardless of personal feelings.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">✨</div>
+                <h3>Integrity</h3>
+                <p>We demonstrate honesty, transparency, and ethical behavior in all actions and decisions. Our word is our bond, and trust is the foundation of every relationship we build.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🛡️</div>
+                <h3>Safety & Well-being</h3>
+                <p>Committed to Health, Safety & Environment excellence. HSEQ is integral to how we do business. Our goal is zero harm to people, environment, and property at all times.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">📚</div>
+                <h3>Education & Growth</h3>
+                <p>We educate and skill our team members by giving them opportunities to register, study, and train, empowering them to uplift the company they've found a home in.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🎯</div>
+                <h3>Excellence</h3>
+                <p>Optimum attention to every detail of the job at hand for all our clients. We don't just meet standards—we set them.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🌍</div>
+                <h3>Community Impact</h3>
+                <p>Dedicated to women and youth empowerment, creating lasting change in South Africa's previously disenfranchised communities through economic participation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations -->
+    <section class="locations">
+        <h2 class="section-title">Our Locations</h2>
+        <p class="section-subtitle">Serving the Northern Cape Region</p>
+        <div class="locations-grid">
+            <div class="location-card">
+                <div class="location-icon">🏢</div>
+                <h3>Pofadder Office</h3>
+                <div class="location-address">
+                    <p>7 Watsonlaan Neet</p>
+                    <p>Pofadder, 8890</p>
+                    <p>Northern Cape, South Africa</p>
+                </div>
+            </div>
+            <div class="location-card">
+                <div class="location-icon">🏠</div>
+                <h3>Kuruman Office</h3>
+                <div class="location-address">
+                    <p>House 668, Block I</p>
+                    <p>Seoding, Kuruman, 8640</p>
+                    <p>Northern Cape, South Africa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Build With Us?</h2>
+            <p>Partner with Meloh Holdings for your next construction project and experience our commitment to excellence, safety, and community empowerment.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-primary">Get In Touch</a>
+                <a href="services.html" class="btn btn-secondary">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Meloh Holdings</h3>
+                <p>Building Tomorrow, Empowering Today. A 100% black-owned, women and youth-led construction company based in Northern Cape, South Africa.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul class="footer-links">
+                    <li>📧 meloh.holdingspty@gmail.com</li>
+                    <li>📞 067 227 5625</li>
+                    <li>📍 7 Watsonlaan Neet, Pofadder, 8890</li>
+                    <li>📍 House 668, Block I, Seoding, Kuruman, 8640</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Meloh Holdings Pty Ltd. All rights reserved. | A sister company of Mantomba Holdings Pty Ltd</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.padding = '1rem 5%';
+            } else {
+                header.style.padding = '1.5rem 5%';
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.stat-card, .leader-card, .value-card, .location-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meloh Holdings | Building Tomorrow, Empowering Today</title>
+    <link ref="icon" href="assets/MelohLogo.png" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --gold: #d4af37;
+            --light: #f5f5f5;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--primary);
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: padding 0.3s;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            z-index: 1;
+            padding: 0 2rem;
+            max-width: 1000px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .mission-vision {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .mv-card {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mv-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
+        }
+
+        .mv-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        /* Values Section */
+        .values {
+            background: var(--light);
+            padding: 6rem 5%;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--gold);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .value-card p {
+            color: #666;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            color: var(--white);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(212,175,55,0.1));
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+        }
+
+        .service-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .service-card ul {
+            list-style: none;
+        }
+
+        .service-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: var(--light);
+            padding: 6rem 5%;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .client-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border-left: 4px solid var(--gold);
+        }
+
+        .client-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .client-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .client-info {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .client-email {
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 6rem 5%;
+        }
+
+        .team-intro {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        .team-structure {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .structure-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .role-card {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .role-card h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .role-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Safety Section */
+        .safety {
+            background: var(--light);
+            padding: 6rem 5%;
+        }
+
+        .safety-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .safety-content h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .safety-content p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .safety-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .safety-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .safety-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.9);
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo"><a><img href="assets/MelohLogo.png"></a>MELOH <span>HOLDINGS</span></div>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <!--<li><a href="#values">Values</a></li>-->
+                <li><a href="services.html">Services</a></li>
+                <!--<li><a href="#portfolio">Portfolio</a></li>-->
+                <!--<li><a href="#team">Team</a></li>-->
+                <!--<li><a href="#safety">Safety</a></li>-->
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Building Tomorrow, Empowering Today</h1>
+            <p class="tagline">100% Black-Owned | Women & Youth Led</p>
+            <p>Pioneering construction excellence in South Africa's Northern Cape. We're not just building structures—we're building futures, empowering communities, and creating lasting change through innovative synergies and social cohesion.</p>
+            <div class="cta-buttons">
+                <a href="services.html" class="btn btn-primary">Explore Services</a>
+                <a href="contact.html" class="btn btn-secondary">Partner With Us</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div style="color: var(--gold); font-size: 2rem;">↓</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 class="section-title">Who We Are</h2>
+        <p class="section-subtitle">Driven by Purpose, Defined by Excellence</p>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Our Story</h3>
+                <p>Established in 2024, Meloh Holdings Pty Ltd represents a new generation of South African enterprise. As a sister company of Mantomba Holdings, we're a 100% black-owned, women and youth-led organization with offices in Pofadder and Kuruman, Northern Cape.</p>
+                <p>We believe that real and significant change to the South African economy comes through the efforts of individuals from diverse cultural and economic backgrounds who remain committed to creating innovative synergies, forging new partnerships, and promoting social cohesion.</p>
+                <p>Our team comprises phenomenal women and youth—dedicated, passionate professionals using their knowledge and experience to make a real difference in the lives of South Africa's previously disenfranchised communities.</p>
+            </div>
+            <div class="mission-vision">
+                <div class="mv-card">
+                    <h4>Our Vision</h4>
+                    <p>To support human progress through an integrative balance of individual, group, and community development—seen as synergistic rather than antagonistic factors of human life and societal advancement. We strive to be the leading provider in our domain.</p>
+                </div>
+                <div class="mv-card">
+                    <h4>Our Mission</h4>
+                    <p>To be the first helping-hand in your time of need. We are committed to offering service that is fast, effective, and reliable. Customer satisfaction is our priority! We empower our recipients by utilizing our skills and maximizing our resources.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section id="values" class="values">
+        <h2 class="section-title">Our Core Values</h2>
+        <p class="section-subtitle">The Principles That Guide Everything We Do</p>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3>Respect</h3>
+                <p>One of our most important traits because it creates a positive work culture for colleagues, clients, and partners to accomplish goals together. A respectful attitude is our priority, regardless of personal feelings.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">✨</div>
+                <h3>Integrity</h3>
+                <p>We demonstrate honesty, transparency, and ethical behavior in all actions and decisions. Our word is our bond, and trust is the foundation of every relationship we build.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🛡️</div>
+                <h3>Safety & Well-being</h3>
+                <p>Committed to Health, Safety & Environment excellence. HSEQ is integral to how we do business. Our goal is zero harm to people, environment, and property at all times.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">📚</div>
+                <h3>Education & Growth</h3>
+                <p>We educate and skill our team members by giving them opportunities to register, study, and train, empowering them to uplift the company they've found a home in.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🎯</div>
+                <h3>Excellence</h3>
+                <p>Optimum attention to every detail of the job at hand for all our clients. We don't just meet standards—we set them.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🌍</div>
+                <h3>Community Impact</h3>
+                <p>Dedicated to women and youth empowerment, creating lasting change in South Africa's previously disenfranchised communities through economic participation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Comprehensive Solutions for Your Every Need</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Construction Services</h3>
+                <ul>
+                    <li>General building services</li>
+                    <li>Pipe work</li>
+                    <li>General site works</li>
+                    <li>Fencing</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>Maintenance Services</h3>
+                <ul>
+                    <li>Basic fixes to equipment & buildings</li>
+                    <li>Plant cleaning</li>
+                    <li>Plumbing</li>
+                    <li>Grass cutting</li>
+                    <li>Electrical work</li>
+                    <li>Painting</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>Electrical Works & Supply</h3>
+                <ul>
+                    <li>Electrical installations</li>
+                    <li>Electrical maintenance</li>
+                    <li>Safety signs</li>
+                    <li>Electrical supply</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>General Supply</h3>
+                <ul>
+                    <li>PPE (Personal Protective Equipment)</li>
+                    <li>Parts & tools</li>
+                    <li>Office furniture</li>
+                    <li>Stationery</li>
+                    <li>Cleaning materials</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>Transport Services</h3>
+                <ul>
+                    <li>Logistics support</li>
+                    <li>Equipment transport</li>
+                    <li>Material deliveries</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>Events & Catering</h3>
+                <ul>
+                    <li>Catering services</li>
+                    <li>Decoration</li>
+                    <li>Events management</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <h2 class="section-title">Our Portfolio</h2>
+        <p class="section-subtitle">Trusted by Leading Organizations</p>
+        <div class="portfolio-grid">
+            <div class="client-card">
+                <h3>Sindisa Projects</h3>
+                <p class="client-info">Lesego Ramonnye</p>
+                <p class="client-info">072 322 8971</p>
+                <p class="client-email">ramonnye@gmail.com</p>
+            </div>
+            <div class="client-card">
+                <h3>Ka Tshimo Enterprise</h3>
+                <p class="client-info">Bonolo Chirwa</p>
+                <p class="client-info">068 165 7968</p>
+                <p class="client-email">katshimo.enterprise@gmail.com</p>
+            </div>
+            <div class="client-card">
+                <h3>Department of Social Development</h3>
+                <p class="client-info">Vera Ratio</p>
+                <p class="client-info">060 978 8301 / 072 891 1355</p>
+                <p class="client-email">Vraito@ncpg.gov.za</p>
+            </div>
+            <div class="client-card">
+                <h3>Joe Morolong Municipality</h3>
+                <p class="client-info">Dineo Leutlwetse</p>
+                <p class="client-info">060 689 0918</p>
+            </div>
+            <div class="client-card">
+                <h3>SRSQS Quantity Surveyors</h3>
+                <p class="client-info">Marito Mabunda</p>
+                <p class="client-info">072 155 3567</p>
+                <p class="client-email">marito@srsqs.co.za</p>
+            </div>
+            <div class="client-card">
+                <h3>Group 5 Construction (Adams PV)</h3>
+                <p class="client-info">Andre Van Rensburg</p>
+                <p class="client-info">083 633 8842</p>
+                <p class="client-email">avrensburg@groupfive.co.za</p>
+            </div>
+            <div class="client-card">
+                <h3>Burk Mine (Diro Resources)</h3>
+                <p class="client-info">Jomo Nkomo</p>
+                <p class="client-info">U82 / 74 DZ14</p>
+            </div>
+            <div class="client-card">
+                <h3>Katnu Solar Park</h3>
+                <p class="client-info">Mark Janick</p>
+                <p class="client-info">U82 / 294 GZ51</p>
+                <p class="client-email">Mark.lanick@kathusolarpark.co.za</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <h2 class="section-title">Our Organization</h2>
+        <p class="section-subtitle">Structured for Success, United by Purpose</p>
+        <div class="team-intro">
+            <p>Our organizational structure ensures excellence at every level. With clearly defined roles and responsibilities, we maintain accountability while fostering collaboration across all departments.</p>
+        </div>
+        <div class="team-structure">
+            <h3 style="text-align: center; margin-bottom: 2rem; color: var(--secondary);">Company Structure</h3>
+            <div class="structure-row">
+                <div class="role-card">
+                    <h4>Chief Executive Officer</h4>
+                    <p>Ntombizodwa Rachel Mabaso</p>
+                    <p>Strategic leadership and organizational oversight</p>
+                </div>
+                <div class="role-card">
+                    <h4>Chief Marketing Officer</h4>
+                    <p>Increase Revenues</p>
+                    <p>Developing and overseeing marketing strategy</p>
+                </div>
+            </div>
+            <div class="structure-row">
+                <div class="role-card">
+                    <h4>Operations Department</h4>
+                    <p>Ensuring compliance with government regulations</p>
+                    <p>Providing resources and operational oversight</p>
+                </div>
+                <div class="role-card">
+                    <h4>Safety Department</h4>
+                    <p>Conducting risk assessments</p>
+                    <p>Developing safety procedures and monitoring PPE</p>
+                </div>
+            </div>
+            <div class="structure-row">
+                <div class="role-card">
+                    <h4>Consultants</h4>
+                    <p>Accounting, Payroll, Financial Management, Legal</p>
+                </div>
+                <div class="role-card">
+                    <h4>HR / Administrator</h4>
+                    <p>HR Administrative, Educational Opportunities</p>
+                    <p>Training & Assessment Evaluation</p>
+                </div>
+            </div>
+            <div class="structure-row">
+                <div class="role-card">
+                    <h4>General Workers</h4>
+                    <p>Cleaning and maintaining work areas</p>
+                    <p>Operating machinery and equipment</p>
+                </div>
+                <div class="role-card">
+                    <h4>Drivers</h4>
+                    <p>Transporting employees and packages</p>
+                    <p>Fulfilling administrative needs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Section -->
+    <section id="safety" class="safety">
+        <h2 class="section-title">Health & Safety</h2>
+        <p class="section-subtitle">Our Commitment to Zero Harm</p>
+        <div class="safety-content">
+            <h3>Health, Safety & Environment Statement</h3>
+            <p>Meloh Holdings Pty Ltd is committed to Health, Safety & Environment and quality service. HSEQ is integral to the way we do business. We recognize communities, employees, business partners, suppliers and customers as stakeholders. We are committed to continual improvement in our performance.</p>
+            <p>We commit to zero harm to people, environment and property, efficient and total customer satisfaction and improved value for everyone. Our management system is consistent with international and organizational standards, legislation and other relevant requirements.</p>
+            
+            <p>We undertake to ensure that our management system is developed, documented, implemented and maintained in a manner that is both understood and effective at all levels in our business, to enable us to:</p>
+            
+            <ul class="safety-list">
+                <li>Identify, assess and manage risks to our employees, clients' employees and the environment</li>
+                <li>Commit to achieving leading industry practice and recognition</li>
+                <li>Meet and where appropriate, exceed applicable legislation</li>
+                <li>Lead and develop our people and provide resources to achieve our targets</li>
+                <li>Support the fundamental human rights of employees and safeguard them from exposure to unacceptable risk</li>
+            </ul>
+            
+            <p>We will seek opportunities to share our success by developing partnerships that focus on creating sustainable value for all stakeholders. We will regularly review our progress and communicate results to all stakeholders in order to enable a relationship based on honesty, openness and mutual trust.</p>
+            
+            <p>We will be successful when we achieve our targets toward our goal of zero harm and are valued by the clients in which we work.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title" style="color: var(--gold);">Let's Build Together</h2>
+        <p class="section-subtitle" style="color: var(--white);">Ready to partner with us? Get in touch today.</p>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>meloh.holdingspty@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>067 227 5625</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <h4>Offices</h4>
+                        <p>7 Watsonlaan Neet, Pofadder, 8890</p>
+                        <p>House 668, Block I, Seoding, Kuruman, 8640</p>
+                    </div>
+                </div>
+                <div style="margin-top: 3rem;">
+                    <h4 style="color: var(--gold); margin-bottom: 1rem;">Our Commitment</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.8;">We commit to zero harm to people, environment, and property. Our management system is consistent with international standards and legislation. We support fundamental human rights and safeguard against unacceptable risks.</p>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3 style="margin-bottom: 1.5rem;">Send Us a Message</h3>
+                <form>
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="Tell us about your project or inquiry..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Meloh Holdings Pty Ltd. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">A sister company of Mantomba Holdings Pty Ltd</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Building Tomorrow, Empowering Today</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Header scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.padding = '1rem 5%';
+            } else {
+                header.style.padding = '1.5rem 5%';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.value-card, .service-card, .role-card, .client-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
