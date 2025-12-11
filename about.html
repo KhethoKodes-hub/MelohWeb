@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Meloh Holdings | Building Tomorrow, Empowering Today</title>
-        <link ref="icon" href="assets/MelohLogo.png" type="image/png">
-            <link rel="icon" href="assets/MelohLogo.png" type="image/png">
-
-
+    <link rel="icon" href="assets/MelohLogo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -38,10 +36,10 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            background: rgba(26, 26, 46, 0.95);
+            background: rgba(26, 26, 46, 0.98);
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            transition: padding 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         nav {
@@ -59,6 +57,9 @@
             color: var(--white);
             letter-spacing: 2px;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .logo span {
@@ -75,29 +76,72 @@
             color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s;
             position: relative;
+            padding: 0.5rem 0;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
             background: var(--gold);
-            transition: width 0.3s;
+            transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
         }
 
         .nav-links a:hover::after {
             width: 100%;
         }
 
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .mobile-menu-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--primary));
+            z-index: 1001;
+            transition: width 0.1s;
+        }
+
         /* Page Header */
         .page-header {
-            height: 40vh;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            height: 50vh;
+            background: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 33, 62, 0.9)), 
+                        url('https://images.unsplash.com/photo-1503387769-00c5f6d6fc6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -106,59 +150,78 @@
             margin-top: 80px;
         }
 
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('./assets/hero2.png');
-            opacity: 0.3;
-        }
-
         .page-header-content {
             text-align: center;
             color: var(--white);
             z-index: 1;
             padding: 0 2rem;
             max-width: 1000px;
+            animation: fadeInUp 1s ease;
         }
 
         .page-header h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .page-header .tagline {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--gold);
             margin-bottom: 1rem;
-            animation: fadeInUp 1s ease 0.2s backwards;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         /* About Intro */
         .about-intro {
-            padding: 6rem 5%;
+            padding: 8rem 5%;
             max-width: 1400px;
             margin: 0 auto;
+            background: linear-gradient(rgba(245, 245, 245, 0.95), rgba(245, 245, 245, 0.95)), 
+                        url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 30px;
+            margin: 4rem 5%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
             color: var(--primary);
             position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: var(--gold);
+            border-radius: 2px;
         }
 
         .section-subtitle {
             text-align: center;
             color: var(--gold);
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
+            font-size: 1.4rem;
+            margin-bottom: 4rem;
             font-weight: 600;
+            letter-spacing: 1px;
         }
 
         .about-intro-content {
@@ -169,15 +232,29 @@
         }
 
         .about-intro-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
             color: var(--secondary);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .about-intro-text h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--gold);
+            border-radius: 2px;
         }
 
         .about-intro-text p {
             margin-bottom: 1.5rem;
             color: #555;
             line-height: 1.8;
+            font-size: 1.1rem;
         }
 
         .stats-grid {
@@ -187,30 +264,67 @@
         }
 
         .stat-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(22, 33, 62, 0.85) 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
             text-align: center;
-            border-top: 4px solid var(--gold);
+            border: 2px solid transparent;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: var(--gold);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(212,175,55,0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
-            color: var(--secondary);
+            color: var(--gold);
             margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
         .stat-label {
-            color: var(--gold);
+            color: var(--white);
             font-weight: 600;
+            position: relative;
+            z-index: 1;
+            font-size: 1.2rem;
         }
 
         /* Mission Vision */
         .mission-vision {
-            background: var(--white);
-            padding: 6rem 5%;
+            padding: 8rem 5%;
+            background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.85)), 
+                        url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
         }
 
         .mv-container {
@@ -219,189 +333,311 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
+            position: relative;
+            z-index: 1;
         }
 
         .mv-card {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
-            padding: 3rem;
-            border-radius: 15px;
+            background: rgba(255,255,255,0.15);
+            padding: 3.5rem;
+            border-radius: 25px;
             color: var(--white);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .mv-card:hover {
+            transform: translateY(-15px);
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            border-color: rgba(212, 175, 55, 0.3);
         }
 
         .mv-card::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s;
+        }
+
+        .mv-card:hover::before {
+            transform: scaleX(1);
         }
 
         .mv-card h3 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
             color: var(--gold);
             position: relative;
             z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .mv-card p {
             position: relative;
             z-index: 1;
             line-height: 1.8;
+            font-size: 1.1rem;
+            opacity: 0.95;
         }
 
         /* Leadership */
         .leadership {
-            padding: 6rem 5%;
-            background: var(--light);
+            padding: 8rem 5%;
+            background: linear-gradient(rgba(245, 245, 245, 0.95), rgba(245, 245, 245, 0.95)), 
+                        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 30px;
+            margin: 4rem 5%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
         }
 
         .leadership-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 3rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .leader-card {
-            background: var(--white);
-            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(22, 33, 62, 0.85) 100%);
+            border-radius: 25px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
         }
 
         .leader-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            border-color: var(--gold);
         }
 
         .leader-image {
-            height: 250px;
+            height: 300px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--white);
             font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leader-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(212,175,55,0.1));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .leader-card:hover .leader-image::before {
+            opacity: 1;
         }
 
         .leader-info {
-            padding: 2rem;
+            padding: 2.5rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
         }
 
         .leader-info h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
-            color: var(--secondary);
+            color: var(--white);
         }
 
         .leader-role {
             color: var(--gold);
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .leader-bio {
-            color: #666;
+            color: rgba(255,255,255,0.9);
             line-height: 1.7;
         }
 
         /* Values */
         .values {
-            padding: 6rem 5%;
-            background: var(--white);
+            padding: 8rem 5%;
+            background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.85)), 
+                        url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
         }
 
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .value-card {
-            background: var(--light);
+            background: rgba(255,255,255,0.1);
             padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-top: 4px solid var(--gold);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
         }
 
         .value-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transform: translateY(-15px);
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.4s;
+        }
+
+        .value-card:hover::before {
+            transform: scaleY(1);
         }
 
         .value-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover .value-icon {
+            transform: scale(1.2) rotate(5deg);
         }
 
         .value-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--secondary);
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            color: var(--white);
         }
 
         .value-card p {
-            color: #666;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.7;
         }
 
         /* Locations */
         .locations {
-            padding: 6rem 5%;
-            background: var(--light);
+            padding: 8rem 5%;
+            background: linear-gradient(rgba(245, 245, 245, 0.95), rgba(245, 245, 245, 0.95)), 
+                        url('https://images.unsplash.com/photo-1542902091-50ba7b1286bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 30px;
+            margin: 4rem 5%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
         }
 
         .locations-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 3rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .location-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(22, 33, 62, 0.85) 100%);
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
         }
 
         .location-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            border-color: var(--gold);
         }
 
         .location-icon {
-            font-size: 3rem;
+            font-size: 4rem;
             margin-bottom: 1.5rem;
             color: var(--gold);
+            transition: transform 0.3s;
+        }
+
+        .location-card:hover .location-icon {
+            transform: scale(1.2);
         }
 
         .location-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--secondary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
         }
 
         .location-address {
-            color: #666;
-            line-height: 1.7;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .location-address p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
         /* CTA Section */
         .cta-section {
-            padding: 6rem 5%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 8rem 5%;
+            background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.85)), 
+                        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: var(--white);
             text-align: center;
         }
@@ -409,60 +645,118 @@
         .cta-content {
             max-width: 800px;
             margin: 0 auto;
+            background: rgba(255,255,255,0.15);
+            padding: 4rem;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transition: all 0.4s;
+        }
+
+        .cta-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            background: rgba(255,255,255,0.2);
         }
 
         .cta-section h2 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
+            color: var(--gold);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
         .cta-section p {
             font-size: 1.2rem;
             margin-bottom: 2.5rem;
-            opacity: 0.9;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .btn {
             padding: 1rem 2.5rem;
             border: none;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-primary {
             background: var(--gold);
             color: var(--primary);
+            box-shadow: 0 5px 20px rgba(212,175,55,0.3);
         }
 
         .btn-primary:hover {
-            background: var(--white);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(212,175,55,0.3);
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(212,175,55,0.4);
         }
 
         .btn-secondary {
             background: transparent;
             color: var(--white);
             border: 2px solid var(--white);
-            margin-left: 1rem;
+            box-shadow: 0 5px 15px rgba(255,255,255,0.1);
         }
 
         .btn-secondary:hover {
             background: var(--white);
             color: var(--primary);
-            transform: translateY(-3px);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(255,255,255,0.2);
         }
 
         /* Footer */
         footer {
             background: var(--primary);
             color: var(--white);
-            padding: 3rem 5% 2rem;
+            padding: 4rem 5% 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gold), var(--secondary));
         }
 
         .footer-content {
@@ -472,12 +766,26 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
             margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-column h3 {
             color: var(--gold);
             margin-bottom: 1.5rem;
             font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
         }
 
         .footer-links {
@@ -486,13 +794,21 @@
 
         .footer-links li {
             margin-bottom: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .footer-links li:hover {
+            transform: translateX(5px);
         }
 
         .footer-links a {
             color: var(--white);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s;
             opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .footer-links a:hover {
@@ -500,14 +816,98 @@
             opacity: 1;
         }
 
+        .footer-links a i {
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
             border-top: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            z-index: 1;
         }
 
         .footer-bottom p {
             opacity: 0.8;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(212,175,55,0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(212,175,55,0.4);
+        }
+
+        /* Mobile Menu */
+        .mobile-nav {
+            position: fixed;
+            top: 80px;
+            right: -100%;
+            width: 300px;
+            height: calc(100vh - 80px);
+            background: var(--primary);
+            z-index: 999;
+            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            padding: 2rem;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: block;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .mobile-nav-links a:hover,
+        .mobile-nav-links a.active {
+            background: rgba(212, 175, 55, 0.1);
+            border-left-color: var(--gold);
+            color: var(--gold);
         }
 
         /* Animations */
@@ -523,9 +923,43 @@
         }
 
         /* Responsive */
+        @media (max-width: 1200px) {
+            .page-header h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .about-intro-content,
+            .mv-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .leadership-grid,
+            .values-grid,
+            .locations-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .page-header {
+                height: 40vh;
+                margin-top: 70px;
+                background-attachment: scroll;
             }
 
             .page-header h1 {
@@ -533,47 +967,166 @@
             }
 
             .page-header .tagline {
-                font-size: 1.2rem;
-            }
-
-            .about-intro-content,
-            .mv-container {
-                grid-template-columns: 1fr;
+                font-size: 1.5rem;
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.2rem;
             }
 
             .stats-grid {
                 grid-template-columns: 1fr;
             }
 
+            .about-intro,
+            .leadership,
+            .locations {
+                margin: 2rem 5%;
+                padding: 4rem 5%;
+            }
+
+            .mission-vision,
+            .values,
+            .cta-section {
+                padding: 4rem 5%;
+                background-attachment: scroll;
+            }
+
+            .cta-content {
+                padding: 3rem 2rem;
+            }
+
             .cta-buttons {
                 flex-direction: column;
                 gap: 1rem;
+                align-items: center;
             }
 
-            .btn-secondary {
-                margin-left: 0;
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .stat-card,
+            .mv-card,
+            .leader-card,
+            .value-card,
+            .location-card {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-header .tagline {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .leadership-grid,
+            .values-grid,
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                gap: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2.8rem;
+            }
+            
+            nav {
+                padding: 1rem 5%;
+            }
+            
+            .mobile-nav {
+                top: 70px;
+                height: calc(100vh - 70px);
+            }
+        }
+
+        @media (max-width: 360px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Ripple effect for buttons */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.7);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress"></div>
+
     <!-- Header -->
     <header>
         <nav>
-            <a href="index.html" class="logo"><a><img href="assets/MelohLogo.png"></a>MELOH <span>HOLDINGS</span></a>
+            <a href="index.html" class="logo">
+                <img src="assets/MelohLogo.png" alt="Meloh Holdings Logo" height="80" width="80" class="logo-img">
+                <div>
+                    <div>MELOH</div>
+                    <div style="color: var(--gold); font-size: 1.4rem;">HOLDINGS</div>
+                </div>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html" class="active">About</a></li>
                 <li><a href="services.html">Services</a></li>
-                <!--<li><a href="portfolio.html">Portfolio</a></li>-->
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="about.html" class="active"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="services.html"><i class="fas fa-tools"></i> Services</a></li>
+            <li><a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </div>
 
     <!-- Page Header -->
     <section class="page-header">
@@ -620,12 +1173,12 @@
     <section class="mission-vision">
         <div class="mv-container">
             <div class="mv-card">
-                <h3>Our Vision</h3>
+                <h3><i class="fas fa-eye"></i> Our Vision</h3>
                 <p>To support human progress through an integrative balance of individual, group, societal and environmental needs whereby self-interest, concern for others and respect for other cultures and for the environment are seen as synergistic, rather than antagonistic factors of human life and societal development.</p>
                 <p>To be a client-based business which will always apply the "people first" (Batho-Pele) principle, and to provide the best business solutions, in order to be the large business provider in this domain.</p>
             </div>
             <div class="mv-card">
-                <h3>Our Mission</h3>
+                <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
                 <p>To provide a professional, safe, hygienic, quality, and friendly service that will be the first helping-hand in your time of need. We are committed in offering a service that is fast effective and economical as our customer satisfaction is our priority!</p>
                 <p>We undertake to maintain and develop the living environment to the benefit of our recipients by utilizing our skills, expertise, and effective combination of our resources.</p>
             </div>
@@ -638,26 +1191,32 @@
         <p class="section-subtitle">Driven by Passionate Professionals</p>
         <div class="leadership-grid">
             <div class="leader-card">
-                <div class="leader-image">👑</div>
+                <div class="leader-image">
+                    <i class="fas fa-crown"></i>
+                </div>
                 <div class="leader-info">
                     <h3>Ntombizodwa Rachel Mabaso</h3>
-                    <div class="leader-role">Chief Executive Officer</div>
+                    <div class="leader-role"><i class="fas fa-user-tie"></i> Chief Executive Officer</div>
                     <p class="leader-bio">Visionary leader with a passion for empowering women and youth in the construction industry. With extensive experience in business development and strategic planning, she drives Meloh Holdings' commitment to excellence and social impact.</p>
                 </div>
             </div>
             <div class="leader-card">
-                <div class="leader-image">👨‍💼</div>
+                <div class="leader-image">
+                    <i class="fas fa-user-tie"></i>
+                </div>
                 <div class="leader-info">
                     <h3>Owethu Mabaso</h3>
-                    <div class="leader-role">Chief Executive Officer</div>
+                    <div class="leader-role"><i class="fas fa-user-tie"></i> Chief Executive Officer</div>
                     <p class="leader-bio">Dedicated to operational excellence and sustainable business practices. Brings innovative approaches to construction management while maintaining the company's core values of integrity and community empowerment.</p>
                 </div>
             </div>
             <div class="leader-card">
-                <div class="leader-image">📈</div>
+                <div class="leader-image">
+                    <i class="fas fa-chart-line"></i>
+                </div>
                 <div class="leader-info">
                     <h3>Marketing Team</h3>
-                    <div class="leader-role">Chief Marketing Officer & Team</div>
+                    <div class="leader-role"><i class="fas fa-bullhorn"></i> Chief Marketing Officer & Team</div>
                     <p class="leader-bio">Focused on increasing brand awareness by 60% within the next two years. Our marketing team develops and oversees the organization's marketing strategy to drive growth and expand our market presence.</p>
                 </div>
             </div>
@@ -666,36 +1225,36 @@
 
     <!-- Values -->
     <section class="values">
-        <h2 class="section-title">Our Values</h2>
-        <p class="section-subtitle">The Foundation of Everything We Do</p>
+        <h2 class="section-title" style="color: var(--white);">Our Values</h2>
+        <p class="section-subtitle" style="color: var(--gold);">The Foundation of Everything We Do</p>
         <div class="values-grid">
             <div class="value-card">
-                <div class="value-icon">🤝</div>
+                <div class="value-icon"><i class="fas fa-handshake"></i></div>
                 <h3>Respect</h3>
                 <p>One of our most important traits because it creates a positive work culture for colleagues, clients, and partners to accomplish goals together. A respectful attitude is our priority, regardless of personal feelings.</p>
             </div>
             <div class="value-card">
-                <div class="value-icon">✨</div>
+                <div class="value-icon"><i class="fas fa-gem"></i></div>
                 <h3>Integrity</h3>
                 <p>We demonstrate honesty, transparency, and ethical behavior in all actions and decisions. Our word is our bond, and trust is the foundation of every relationship we build.</p>
             </div>
             <div class="value-card">
-                <div class="value-icon">🛡️</div>
+                <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
                 <h3>Safety & Well-being</h3>
                 <p>Committed to Health, Safety & Environment excellence. HSEQ is integral to how we do business. Our goal is zero harm to people, environment, and property at all times.</p>
             </div>
             <div class="value-card">
-                <div class="value-icon">📚</div>
+                <div class="value-icon"><i class="fas fa-graduation-cap"></i></div>
                 <h3>Education & Growth</h3>
                 <p>We educate and skill our team members by giving them opportunities to register, study, and train, empowering them to uplift the company they've found a home in.</p>
             </div>
             <div class="value-card">
-                <div class="value-icon">🎯</div>
+                <div class="value-icon"><i class="fas fa-award"></i></div>
                 <h3>Excellence</h3>
                 <p>Optimum attention to every detail of the job at hand for all our clients. We don't just meet standards—we set them.</p>
             </div>
             <div class="value-card">
-                <div class="value-icon">🌍</div>
+                <div class="value-icon"><i class="fas fa-globe-africa"></i></div>
                 <h3>Community Impact</h3>
                 <p>Dedicated to women and youth empowerment, creating lasting change in South Africa's previously disenfranchised communities through economic participation.</p>
             </div>
@@ -708,21 +1267,23 @@
         <p class="section-subtitle">Serving the Northern Cape Region</p>
         <div class="locations-grid">
             <div class="location-card">
-                <div class="location-icon">🏢</div>
+                <div class="location-icon"><i class="fas fa-building"></i></div>
                 <h3>Pofadder Office</h3>
                 <div class="location-address">
-                    <p>7 Watsonlaan Neet</p>
-                    <p>Pofadder, 8890</p>
-                    <p>Northern Cape, South Africa</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 7 Watsonlaan Neet</p>
+                    <p><i class="fas fa-city"></i> Pofadder, 8890</p>
+                    <p><i class="fas fa-flag"></i> Northern Cape, South Africa</p>
+                    <p><i class="fas fa-phone"></i> 071 742 4702</p>
                 </div>
             </div>
             <div class="location-card">
-                <div class="location-icon">🏠</div>
+                <div class="location-icon"><i class="fas fa-home"></i></div>
                 <h3>Kuruman Office</h3>
                 <div class="location-address">
-                    <p>House 668, Block I</p>
-                    <p>Seoding, Kuruman, 8640</p>
-                    <p>Northern Cape, South Africa</p>
+                    <p><i class="fas fa-map-marker-alt"></i> House 668, Block I</p>
+                    <p><i class="fas fa-city"></i> Seoding, Kuruman, 8640</p>
+                    <p><i class="fas fa-flag"></i> Northern Cape, South Africa</p>
+                    <p><i class="fas fa-phone"></i> 067 227 5625</p>
                 </div>
             </div>
         </div>
@@ -734,8 +1295,12 @@
             <h2>Ready to Build With Us?</h2>
             <p>Partner with Meloh Holdings for your next construction project and experience our commitment to excellence, safety, and community empowerment.</p>
             <div class="cta-buttons">
-                <a href="contact.html" class="btn btn-primary">Get In Touch</a>
-                <a href="services.html" class="btn btn-secondary">Our Services</a>
+                <a href="contact.html" class="btn btn-primary">
+                    <i class="fas fa-handshake"></i> Get In Touch
+                </a>
+                <a href="services.html" class="btn btn-secondary">
+                    <i class="fas fa-tools"></i> Our Services
+                </a>
             </div>
         </div>
     </section>
@@ -750,20 +1315,21 @@
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+                    <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h3>Contact Info</h3>
                 <ul class="footer-links">
-                    <li>📧 meloh.holdingspty@gmail.com</li>
-                    <li>📞 067 227 5625</li>
-                    <li>📍 7 Watsonlaan Neet, Pofadder, 8890</li>
-                    <li>📍 House 668, Block I, Seoding, Kuruman, 8640</li>
+                    <li><a href="mailto:meloh.holdingspty@gmail.com"><i class="fas fa-envelope"></i> meloh.holdingspty@gmail.com</a></li>
+                    <li><a href="tel:0672275625"><i class="fas fa-phone"></i> 067 227 5625 (Main Office - Kuruman)</a></li>
+                    <li><a href="tel:0717424702"><i class="fas fa-phone"></i> 071 742 4702 (Regional Office - Pofadder)</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> House 668, Block I, Seoding, Kuruman, 8640</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> 7 Watsonlaan Neet, Pofadder, 8890</a></li>
                 </ul>
             </div>
         </div>
@@ -772,14 +1338,54 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mobileNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+
         // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        document.querySelectorAll('a[href^="#"], .mobile-nav-links a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const href = this.getAttribute('href');
+                
+                if (href === '#') {
+                    e.preventDefault();
+                    return;
+                }
+                
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        // Close mobile menu
+                        mobileNav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
                 }
             });
         });
@@ -790,9 +1396,26 @@
             const currentScroll = window.pageYOffset;
             
             if (currentScroll > 100) {
-                header.style.padding = '1rem 5%';
+                header.style.padding = '0';
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.2)';
             } else {
-                header.style.padding = '1.5rem 5%';
+                header.style.padding = '';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+            
+            // Scroll progress
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            scrollProgress.style.width = scrolled + '%';
+            
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (currentScroll > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
             }
         });
 
@@ -812,12 +1435,84 @@
         }, observerOptions);
 
         // Observe elements for animation
-        document.querySelectorAll('.stat-card, .leader-card, .value-card, .location-card').forEach(el => {
+        document.querySelectorAll('.stat-card, .leader-card, .value-card, .location-card, .mv-card, .cta-content').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
         });
+
+        // Back to top functionality
+        document.getElementById('backToTop').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Ripple effect for buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size/2;
+                const y = e.clientY - rect.top - size/2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255,255,255,0.7);
+                    transform: scale(0);
+                    animation: ripple-animation 0.6s linear;
+                    width: ${size}px;
+                    height: ${size}px;
+                    top: ${y}px;
+                    left: ${x}px;
+                    pointer-events: none;
+                `;
+                
+                this.appendChild(ripple);
+                
+                // Remove ripple after animation
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Preload images for better performance
+        const images = [
+            'https://images.unsplash.com/photo-1503387769-00c5f6d6fc6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+            'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+            'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+            'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+            'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+            'https://images.unsplash.com/photo-1542902091-50ba7b1286bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+            'https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+        ];
+
+        images.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+
+        // Add hover effect to cards on mobile
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.stat-card, .leader-card, .value-card, .location-card, .mv-card').forEach(card => {
+                card.addEventListener('touchstart', function() {
+                    this.classList.add('hover');
+                });
+                
+                card.addEventListener('touchend', function() {
+                    setTimeout(() => {
+                        this.classList.remove('hover');
+                    }, 300);
+                });
+            });
+        }
     </script>
 </body>
 </html>
